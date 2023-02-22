@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_22_054502) do
+ActiveRecord::Schema.define(version: 2023_02_22_064056) do
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "work_id"
+    t.string "title"
+    t.date "scheduled_date"
+    t.date "due_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +31,19 @@ ActiveRecord::Schema.define(version: 2023_02_22_054502) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "works", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "client_name"
+    t.string "contact_label"
+    t.text "contact_url"
+    t.string "document_label"
+    t.text "document_url"
+    t.date "due"
+    t.text "memo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
