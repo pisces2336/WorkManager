@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_22_064056) do
+ActiveRecord::Schema.define(version: 2023_02_23_033159) do
 
   create_table "tasks", force: :cascade do |t|
     t.integer "work_id"
@@ -36,9 +36,7 @@ ActiveRecord::Schema.define(version: 2023_02_22_064056) do
   create_table "works", force: :cascade do |t|
     t.integer "user_id"
     t.string "client_name"
-    t.string "contact_label"
     t.text "contact_url"
-    t.string "document_label"
     t.text "document_url"
     t.date "due"
     t.text "memo"
