@@ -1,2 +1,47 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+      <div>
+        <h1 class="d-inline"><%= @work.client_name %></h1>
+
+        <% if @work.contact_url.present? %>
+          <%= link_to "連絡先", @work.contact_url %>
+        <% else %>
+          連絡先未設定
+        <% end %>
+
+        <% if @work.document_url.present? %>
+          <%= link_to "資料", @work.document_url %>
+        <% else %>
+          資料未設定
+        <% end %>
+      </div>
+
+      <div class="text-end">
+        <%= link_to "編集", edit_work_path(@work), class: "btn btn-outline-secondary" %>
+        <%= link_to "削除", work_path(@work), method: :delete, class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
+
+    <div class="col-md-7 offset-md-1">
+      <h2>作業リスト</h2>
+
+      <div class="text-end">
+        <%= link_to "新規", new_task_path(work: @work), class: "btn btn-outline-secondary" %>
+      </div>
+
+      <% @work.tasks.order(:scheduled_date).each do |task| %>
+        <%= link_to work_path(work), class: "d-block shadow-sm" do %>
+          <h3><%= task.title %></h3>
+
+          <div class="text-end">
+            <p>作業予定日：<%= task.scheduled_date %></p>
+            <p>提出締切：<%= task.due_date %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
