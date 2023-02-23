@@ -31,16 +31,17 @@
         <%= link_to "新規", new_work_task_path(@work), class: "btn btn-outline-secondary" %>
       </div>
 
-      <% @work.tasks.order(:scheduled_date).each do |task| %>
-        <%= link_to work_path(task.work), class: "d-block shadow-sm" do %>
-          <h3><%= task.title %></h3>
+      <div class="d-grid gap-2">
+        <% @work.tasks.order(:scheduled_date).each do |task| %>
+          <%= link_to work_path(task.work), class: "btn btn-outline-secondary shadow" do %>
+            <h3 class="text-start"><%= task.title %></h3>
 
-          <div class="text-end">
-            <p>作業予定日：<%= task.scheduled_date %></p>
-            <p>提出締切：<%= task.due_date %></p>
-          </div>
+            <div class="text-end">
+              <p class="m-0">作業予定日：<%= task.scheduled_date %> | 提出締切：<%= task.due_date %></p>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
 
   </div>
