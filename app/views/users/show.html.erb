@@ -12,8 +12,8 @@
           <div class="bg-light d-flex flex-wrap py-2">
             <% @tasks.where(scheduled_date: date).each do |task| %>
               <%= link_to work_path(task.work), class: "btn btn-outline-secondary shadow text-start m-2", style: "width: 9.5rem" do %>
-                <p class="m-0"><%= task.title %></p>
-                <h4 class="m-0 "><%= task.work.client_name %></h4>
+                <p class="m-0 text-truncate"><%= task.title %></p>
+                <h4 class="m-0 text-truncate"><%= task.work.client_name %></h4>
                 <p class="m-0">締切：<%= l task.due_date %></p>
               <% end %>
             <% end %>

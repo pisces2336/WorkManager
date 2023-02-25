@@ -6,9 +6,9 @@
       <div class="d-flex flex-wrap">
         <% @works.each do |work| %>
           <%= link_to work_path(work), class: "btn btn-outline-secondary shadow m-2 pt-3", style: "width: 9.5rem; height: 10rem" do %>
-            <h3><%= work.client_name %></h3>
-            <p class="text-start">memo:</p>
-            <p class="text-start"><%= work.memo %></p>
+            <h3 class="text-truncate"><%= work.client_name %></h3>
+            <p class="mb-0 text-start">memo:</p>
+            <p class="mb-0 text-start text-break text-wrap text-truncate" style="max-height: 3.2rem; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2"><%= work.memo %></p>
           <% end %>
         <% end %>
       </div>

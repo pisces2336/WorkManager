@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="col-md-4">
-      <h1><%= @work.client_name %></h1>
+      <h1 class="text-truncate"><%= @work.client_name %></h1>
 
       <div class="text-end">
         <%= link_to "編集", edit_work_path(@work), class: "btn btn-outline-secondary" %>
@@ -32,8 +32,8 @@
       <hr>
 
       <div>
-        <p>memo:</p>
-        <p><%= @work.memo %></p>
+        <p class="mb-0 text-truncate">memo:</p>
+        <p class="text-break text-wrap"><%= @work.memo %></p>
       </div>
     </div>
 
