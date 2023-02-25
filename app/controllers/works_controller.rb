@@ -12,6 +12,7 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @work = Work.find(params[:id])
   end
 
   def create
@@ -24,6 +25,12 @@ class WorksController < ApplicationController
   end
 
   def update
+    @work = Work.find(params[:id])
+    if @work.update(work_params)
+      redirect_to work_path(@work)
+    else
+      render :edit
+    end
   end
 
   def destroy
