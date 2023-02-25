@@ -2,36 +2,50 @@
   <div class="row">
 
     <div class="col-md-4">
-      <div>
-        <h1 class="d-inline"><%= @work.client_name %></h1>
-
-        <% if @work.contact_url.present? %>
-          <%= link_to "連絡先", @work.contact_url %>
-        <% else %>
-          連絡先未設定
-        <% end %>
-
-        <% if @work.document_url.present? %>
-          <%= link_to "資料", @work.document_url %>
-        <% else %>
-          資料未設定
-        <% end %>
-      </div>
+      <h1><%= @work.client_name %></h1>
 
       <div class="text-end">
         <%= link_to "編集", edit_work_path(@work), class: "btn btn-outline-secondary" %>
         <%= link_to "削除", work_path(@work), method: :delete, class: "btn btn-outline-secondary" %>
       </div>
+
+      <hr>
+
+      <div class="d-grid gap-2">
+        <% if @work.contact_url.present? %>
+          <%= link_to @work.contact_url, class: "btn btn-outline-secondary" do %>
+            <i class="fa-solid fa-address-book fa-2x"></i>
+          <% end %>
+        <% else %>
+          <%= link_to "連絡先未設定", @work.document_url, class: "btn btn-outline-secondary disabled", "area-disabled" => true %>
+        <% end %>
+
+        <% if @work.document_url.present? %>
+          <%= link_to @work.document_url, class: "btn btn-outline-secondary" do %>
+            <i class="fa-solid fa-file fa-2x"></i>
+          <% end %>
+        <% else %>
+          <%= link_to "資料未設定", @work.document_url, class: "btn btn-outline-secondary disabled", "area-disabled" => true %>
+        <% end %>
+      </div>
+
+      <hr>
+
+      <div>
+        <p>memo:</p>
+        <p><%= @work.memo %></p>
+      </div>
     </div>
 
-    <div class="col-md-7 offset-md-1">
+
+    <div class="col-md-7 offset-md-1 mt-3 mt-md-0">
       <h2>作業リスト</h2>
 
       <div class="text-end">
         <%= link_to "新規", new_work_task_path(@work), class: "btn btn-outline-secondary" %>
       </div>
 
-      <div class="d-grid gap-2">
+      <div class="d-grid gap-2 mt-3">
         <% @work.tasks.order(:scheduled_date).each do |task| %>
           <%= link_to edit_work_task_path(@work, task), class: "btn btn-outline-secondary shadow" do %>
             <h3 class="text-start"><%= task.title %></h3>
