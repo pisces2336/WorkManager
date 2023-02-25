@@ -6,7 +6,7 @@
       <div class="d-flex flex-wrap">
         <% @works.each do |work| %>
           <%= link_to work_path(work), class: "btn btn-outline-secondary shadow m-2 pt-3", style: "width: 9.5rem; height: 10rem" do %>
-            <h2><%= work.client_name %></h2>
+            <h3><%= work.client_name %></h3>
             <p class="text-start">memo:</p>
             <p class="text-start"><%= work.memo %></p>
           <% end %>
