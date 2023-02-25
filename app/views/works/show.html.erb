@@ -33,7 +33,7 @@
 
       <div class="d-grid gap-2">
         <% @work.tasks.order(:scheduled_date).each do |task| %>
-          <%= link_to work_path(task.work), class: "btn btn-outline-secondary shadow" do %>
+          <%= link_to edit_work_task_path(@work, task), class: "btn btn-outline-secondary shadow" do %>
             <h3 class="text-start"><%= task.title %></h3>
 
             <div class="text-end">

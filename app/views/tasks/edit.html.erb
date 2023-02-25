@@ -1,2 +1,12 @@
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>タスク編集 (<%= @work.client_name %>)</h2>
+      <%= render 'form', work: @work, task: @task %>
+
+      <div class="d-grid mt-3">
+        <%= link_to "削除", work_task_path(@work, @task), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger"%>
+      </div>
+    </div>
+  </div>
+</div>

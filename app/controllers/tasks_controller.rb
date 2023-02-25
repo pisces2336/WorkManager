@@ -9,6 +9,8 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task = Task.find(params[:id])
+    @work = Work.find(params[:work_id])
   end
 
   def create
@@ -25,6 +27,10 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    Task.find(params[:id]).destroy
+
+    work = Work.find(params[:work_id])
+    redirect_to work_path(work)
   end
 
   private
