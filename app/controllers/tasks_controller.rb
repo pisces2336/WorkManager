@@ -16,7 +16,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to work_path(@task.work)
     else
-      @work = @task.work
+      @work = Work.find(params[:work_id])
       render :new
     end
   end
