@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  belongs_to :work, dependent: :destroy
+  belongs_to :work
 
   validates :title, presence: true
   validates :scheduled_date, presence: true
