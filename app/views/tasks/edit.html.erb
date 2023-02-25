@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <h2>タスク編集 (<%= @work.client_name %>)</h2>
+    <div class="col-md-5 mx-auto">
+      <h1>タスク編集 (<%= @work.client_name %>)</h1>
       <%= render 'form', work: @work, task: @task %>
 
       <div class="d-grid mt-3">
