@@ -4,6 +4,12 @@
     <div class="col-md-4">
       <h1 class="text-truncate"><%= @work.client_name %></h1>
 
+      <% if @work.due.present? %>
+        <p>納期：<%= l @work.due %></p>
+      <% else %>
+        <p>納期未設定</p>
+      <% end %>
+
       <div class="text-end">
         <%= link_to "編集", edit_work_path(@work), class: "btn btn-outline-secondary" %>
         <%= link_to "削除", work_path(@work), method: :delete, class: "btn btn-outline-secondary" %>
